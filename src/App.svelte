@@ -1,19 +1,16 @@
 <script>
-  let todos = [
-    { title: 'Learn Svelte', completed: true },
-    { title: 'Learn SvelteKit', completed: false },
-  ]
+  import { todos } from './stores'
 
   let todo
 
   function handleSubmit() {
     if (todo === '') return
-    todos = [...todos, { title: todo, completed: false }]
+    todos.set([...$todos, { title: todo, completed: false }])
     todo = ''
   }
 
   function deleteTodo(todo) {
-    todos = todos.filter((t) => t !== todo)
+    todos.set($todos.filter((t) => t !== todo))
   }
 </script>
 
@@ -27,17 +24,21 @@
 </div>
 
 <div>
-  <ul>
-    {#each todos as todo}
-      <li>
-        {todo.title}
-        <span>
-          <button on:click={deleteTodo.bind(this, todo)}> Delete </button>
-        </span>
-      </li>
-    {/each}
-  </ul>
-  <div>
-    <button on:click={() => (todos = [])}> Delete Tasks </button>
-  </div>
+  {#if $todos.length === 0}
+    <p>No tasks to do!</p>
+  {:else}
+    <ul>
+      {#each $todos as todo}
+        <li>
+          {todo.title}
+          <span>
+            <button on:click={deleteTodo.bind(this, todo)}> Delete </button>
+          </span>
+        </li>
+      {/each}
+    </ul>
+    <div>
+      <button on:click={() => todos.set([])}> Delete Tasks </button>
+    </div>
+  {/if}
 </div>
