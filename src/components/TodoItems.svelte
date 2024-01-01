@@ -8,6 +8,10 @@
     })
     $todos = $todos
   }
+
+  function deleteCompletedTasks() {
+    $todos = $todos.filter((todo) => !todo.completed)
+  }
 </script>
 
 {#if $todos.length === 0}
@@ -24,10 +28,10 @@
       Check Tasks
     </button>
     <button
-      on:click={() => todos.set([])}
+      on:click={deleteCompletedTasks}
       class="btn btn-error btn-sm text-white"
     >
-      Delete Tasks
+      Delete Completed Tasks
     </button>
   </div>
 {/if}
