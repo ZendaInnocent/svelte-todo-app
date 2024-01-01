@@ -1,6 +1,13 @@
 <script>
   import { todos } from '../stores'
   import TodoItem from './TodoItem.svelte'
+
+  function markTasksComplted() {
+    $todos.forEach((todo) => {
+      todo.completed = true
+    })
+    $todos = $todos
+  }
 </script>
 
 {#if $todos.length === 0}
@@ -13,6 +20,9 @@
   </ul>
   <div class="divider"></div>
   <div class="text-right">
+    <button on:click={markTasksComplted} class="btn btn-info btn-sm text-white">
+      Check Tasks
+    </button>
     <button
       on:click={() => todos.set([])}
       class="btn btn-error btn-sm text-white"
