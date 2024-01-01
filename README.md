@@ -2,7 +2,22 @@
 
 This is a simple to-do app built using Svelte.
 
-![Svelte Todo App](./src/assets/Svelte%20Todo%20App.png)
+- Simple and Elegant
+
+![Svelte Todo App](./src/assets/todo-app.png)
+
+- Multiple themes
+
+![themes to choose from](src/assets/themes.png)
+
+## Features
+
+- [x] Add a task to a list
+- [x] Edit a task
+- [x] Delete a task
+- [x] Mark a task/tasks as completed
+- [x] Delete completed tasks at once
+- [ ] Perstistance of tasks
 
 ## Getting Started
 
