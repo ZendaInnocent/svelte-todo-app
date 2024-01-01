@@ -11,7 +11,13 @@
       <TodoItem {todo} />
     {/each}
   </ul>
-  <div>
-    <button on:click={() => todos.set([])}> Delete Tasks </button>
+  <div class="divider"></div>
+  <div class="text-right">
+    <button
+      on:click={() => todos.set([])}
+      class="btn btn-error btn-sm text-white"
+    >
+      Delete Tasks
+    </button>
   </div>
 {/if}

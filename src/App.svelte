@@ -1,14 +1,17 @@
 <script>
+  import './App.css'
   import TodoItems from './components/TodoItems.svelte'
   import TodoForm from './components/TodoForm.svelte'
 </script>
 
-<h1>Todo List App</h1>
+<main class="container py-4 mx-auto">
+  <h1 class="text-4xl mb-4 text-center">Todo List App</h1>
 
-<div>
-  <TodoForm />
-</div>
-
-<div>
-  <TodoItems />
-</div>
+  <div class="text-center">
+    <TodoForm />
+  </div>
+  <div class="divider"></div>
+  <div>
+    <TodoItems />
+  </div>
+</main>
