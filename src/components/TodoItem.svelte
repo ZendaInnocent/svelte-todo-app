@@ -10,8 +10,15 @@
 <li class="flex items-center justify-between my-2 outline p-3 rounded">
   {todo.title}
   <span>
-    <div class="tooltip" data-tip="Mark a task as completed">
-      <input type="checkbox" class="checkbox checkbox-primary me-3" />
+    <div
+      class="tooltip"
+      data-tip={`Mark a task as ${todo.completed ? 'incomplete' : 'completed'}`}
+    >
+      <input
+        type="checkbox"
+        class="checkbox checkbox-primary me-3"
+        bind:checked={todo.completed}
+      />
     </div>
     <div class="tooltip me-3" data-tip="Edit a Task">
       <button class="btn btn-square btn-sm btn-outline">
