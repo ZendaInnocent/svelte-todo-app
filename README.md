@@ -2,6 +2,8 @@
 
 This is a simple to-do app built using Svelte.
 
+![Svelte Todo App](./src/assets/Svelte%20Todo%20App.png)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
