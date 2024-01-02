@@ -1,20 +1,18 @@
 <script>
   import Icon from '@iconify/svelte'
-  import { todos } from '../stores'
+  import { deleteTodo, updateTodo } from '../db'
+
   export let todo
   let isEditing = false
   let editedTitle = todo.title
-
-  function deleteTodo(todo) {
-    todos.set($todos.filter((t) => t !== todo))
-  }
 
   function toggleEditing() {
     isEditing = !isEditing
   }
 
-  function saveEditedTitle() {
+  function saveEditedTodo() {
     todo.title = editedTitle
+    updateTodo(todo)
     isEditing = false
   }
 </script>
@@ -48,7 +46,7 @@
       <div class="tooltip me-3" data-tip="Save a Task">
         <button
           class="btn btn-square btn-sm btn-outline"
-          on:click={saveEditedTitle}
+          on:click={saveEditedTodo}
         >
           <Icon icon="material-symbols:save" width="24" height="24" />
         </button>
