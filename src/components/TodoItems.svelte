@@ -1,17 +1,6 @@
 <script>
   import TodoItem from './TodoItem.svelte'
-  import { todos } from '../db'
-
-  function markTasksComplted() {
-    $todos.forEach((todo) => {
-      todo.completed = true
-    })
-    $todos = $todos
-  }
-
-  function deleteCompletedTasks() {
-    $todos = $todos.filter((todo) => !todo.completed)
-  }
+  import { todos, deleteCompletedTodos, markTodosCompleted } from '../db'
 </script>
 
 {#if $todos}
@@ -25,18 +14,22 @@
     </ul>
     <div class="divider"></div>
     <div class="text-right">
-      <button
-        on:click={markTasksComplted}
-        class="btn btn-info btn-sm text-white"
-      >
-        Check Tasks
-      </button>
-      <button
-        on:click={deleteCompletedTasks}
-        class="btn btn-error btn-sm text-white"
-      >
-        Delete Completed Tasks
-      </button>
+      <div class="tooltip" data-tip="Mark all tasks as completed">
+        <button
+          on:click={markTodosCompleted}
+          class="btn btn-info btn-sm text-white"
+        >
+          Check Tasks
+        </button>
+      </div>
+      <div class="tooltip" data-tip="Delete all completed tasks">
+        <button
+          on:click={deleteCompletedTodos}
+          class="btn btn-error btn-sm text-white"
+        >
+          Delete Completed Tasks
+        </button>
+      </div>
     </div>
   {/if}
 {/if}

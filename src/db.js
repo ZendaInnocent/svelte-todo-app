@@ -22,3 +22,18 @@ export async function updateTodo(todo) {
     completed: todo.completed,
   })
 }
+
+export async function markTodosCompleted() {
+  const todos = await db.todos.toArray()
+
+  return await db.todos.bulkPut(
+    todos.map((todo) => ({ ...todo, completed: true }))
+  )
+}
+
+export async function deleteCompletedTodos() {
+  const todos = await db.todos.toArray()
+  const completedTodos = todos.filter((todo) => todo.completed)
+  const ids = completedTodos.map((todo) => todo.id)
+  return await db.todos.bulkDelete(ids)
+}
