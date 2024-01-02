@@ -37,3 +37,11 @@ export async function deleteCompletedTodos() {
   const ids = completedTodos.map((todo) => todo.id)
   return await db.todos.bulkDelete(ids)
 }
+
+export async function toggleTodoCompleted(todo) {
+  const _todo = await db.todos.get(todo.id)
+
+  return await db.todos.update(todo.id, {
+    completed: !_todo.completed,
+  })
+}

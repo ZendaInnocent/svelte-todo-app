@@ -1,6 +1,6 @@
 <script>
   import Icon from '@iconify/svelte'
-  import { deleteTodo, updateTodo } from '../db'
+  import { deleteTodo, updateTodo, toggleTodoCompleted } from '../db'
 
   export let todo
   let isEditing = false
@@ -40,6 +40,7 @@
         type="checkbox"
         class="checkbox checkbox-primary me-3"
         bind:checked={todo.completed}
+        on:change={toggleTodoCompleted.bind(this, todo)}
       />
     </div>
     {#if isEditing}
