@@ -7,3 +7,7 @@ db.version(1).stores({
 })
 
 export let todos = liveQuery(() => db.todos.toArray())
+
+export async function addTodo(title) {
+  return await db.todos.add({ title, completed: false })
+}

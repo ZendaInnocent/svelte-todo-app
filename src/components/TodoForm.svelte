@@ -1,10 +1,10 @@
 <script>
-  import { todos } from '../stores'
+  import { addTodo } from '../db'
   let todo
 
   function handleSubmit() {
     if (todo === '') return
-    todos.set([...$todos, { title: todo, completed: false }])
+    addTodo(todo)
     todo = ''
   }
 </script>
