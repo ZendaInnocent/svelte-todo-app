@@ -16,6 +16,11 @@
     name="todo"
     bind:value={todo}
     class="input input-bordered input-primary w-3/4 me-3"
+    on:keyup={(e) => {
+      if (e.key === 'Escape') {
+        todo = ''
+        return
+      }
+    }}
   />
-  <button type="submit" class="btn btn-primary text-white">Submit</button>
 </form>
