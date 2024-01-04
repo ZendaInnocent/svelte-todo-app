@@ -30,17 +30,7 @@
     />
   {:else}
     <span class="w-4/5">
-      {todo.title} -
-      {new Date(todo.createdAt).toLocaleDateString('tz', {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-      })} -
-      {new Date(todo.dueDate).toLocaleDateString('tz', {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-      })}
+      {todo.title}
     </span>
   {/if}
   <span>

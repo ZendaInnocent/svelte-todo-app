@@ -6,7 +6,11 @@ db.version(1).stores({
   todos: '++id, title, completed, createdAt, dueDate, updatedAt',
 })
 
-export let todos = liveQuery(() => db.todos.toArray())
+export let todos = liveQuery(async () => {
+  const _todos = await db.todos.toArray()
+  _todos.sort((a, b) => b.createdAt - a.createdAt)
+  return _todos
+})
 
 export async function addTodo(title) {
   return await db.todos.add({
