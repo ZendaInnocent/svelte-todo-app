@@ -13,6 +13,7 @@
   <input
     type="text"
     placeholder="Add a To-Do"
+    name="todo"
     bind:value={todo}
     class="input input-bordered input-primary w-3/4 me-3"
   />

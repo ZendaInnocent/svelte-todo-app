@@ -29,7 +29,19 @@
       class="input input-primary w-3/4 m-0"
     />
   {:else}
-    {todo.title}
+    <span class="w-4/5">
+      {todo.title} -
+      {new Date(todo.createdAt).toLocaleDateString('tz', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+      })} -
+      {new Date(todo.dueDate).toLocaleDateString('tz', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+      })}
+    </span>
   {/if}
   <span>
     <div
@@ -38,6 +50,7 @@
     >
       <input
         type="checkbox"
+        id={todo.id}
         class="checkbox checkbox-primary me-3"
         bind:checked={todo.completed}
         on:change={toggleTodoCompleted.bind(this, todo)}

@@ -3,13 +3,18 @@ import Dexie, { liveQuery } from 'dexie'
 const db = new Dexie('todo-app-db')
 
 db.version(1).stores({
-  todos: '++id, title, done',
+  todos: '++id, title, completed, createdAt, dueDate, updatedAt',
 })
 
 export let todos = liveQuery(() => db.todos.toArray())
 
 export async function addTodo(title) {
-  return await db.todos.add({ title, completed: false })
+  return await db.todos.add({
+    title,
+    completed: false,
+    createdAt: Date.now(),
+    dueDate: Date.now() + 1000 * 60 * 60 * 24,
+  })
 }
 
 export async function deleteTodo(todo) {
@@ -20,6 +25,7 @@ export async function updateTodo(todo) {
   return await db.todos.update(todo.id, {
     title: todo.title,
     completed: todo.completed,
+    updatedAt: Date.now(),
   })
 }
 
