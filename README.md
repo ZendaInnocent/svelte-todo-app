@@ -18,6 +18,8 @@ This is a simple to-do app built using Svelte.
 - [x] Mark a task/tasks as completed
 - [x] Delete completed tasks at once
 - [x] Perstistance of tasks
+- [x] Works offline
+- [x] Working with multiple themes
 
 ## Getting Started
 
