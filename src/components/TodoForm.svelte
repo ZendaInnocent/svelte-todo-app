@@ -14,6 +14,7 @@
     type="text"
     placeholder="Add a To-Do"
     name="todo"
+    aria-label="todo-input"
     bind:value={todo}
     class="input input-bordered input-primary w-3/4 me-3"
     on:keyup={(e) => {

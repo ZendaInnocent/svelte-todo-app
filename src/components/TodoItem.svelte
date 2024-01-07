@@ -41,6 +41,7 @@
       <input
         type="checkbox"
         id={todo.id}
+        aria-label="item-checkbox"
         class="checkbox checkbox-primary me-3"
         bind:checked={todo.completed}
         on:change={toggleTodoCompleted.bind(this, todo)}
